@@ -3,7 +3,11 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword() {
   var passLength = window.prompt("Choose a password length between 8 and 64 characters.");
   
-  if (passLength)
+  if (passLength <= 64 && passLength >= 8) {
+    alert("Thanks!");
+  }else {
+    alert("Please choose a number between 8 and 64!");
+  }
 
 
 
