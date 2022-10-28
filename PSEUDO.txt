@@ -1,0 +1,13 @@
+PSEUDOCODE
+
+##What is the purpose?
+
+Generate a random password for employees to use.
+
+##What happens when you click the "generate password" button?
+
+The user is prompted with which criteria will be included for the password.
+-Capital letters
+-Lowercase letters
+-Numbers
+-Special characters
