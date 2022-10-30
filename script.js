@@ -56,7 +56,7 @@ const lowerCasedChars = [
   "y",
   "z",
 ];
-
+//upper case chars array
 const upperCasedChars = [
   "A",
   "B",
@@ -85,9 +85,10 @@ const upperCasedChars = [
   "Y",
   "Z",
 ];
-
+//creates a variable called 'generateBtn' thats value is the id '#generate' from the HTML file.
 var generateBtn = document.querySelector("#generate");
 
+//this function creates the prompts asking the user what conditions they want to use for their password.
 function passwordOptions() {
   var passLength = window.prompt(
     "Choose a password length between 8 and 64 characters."
@@ -100,7 +101,6 @@ function passwordOptions() {
   var lowerCase = window.confirm(
     "Would you like to use lower case letters in your password?"
   );
-
   var upperCase = window.confirm(
     "Would you like to use upper case letters in your password?"
   );
@@ -112,7 +112,7 @@ function passwordOptions() {
   var specials = window.confirm(
     "Would you like to use special characters letters in your password?"
   );
-
+  //creates an object with the key-value properties that will be used to generate the random characters.
   let options = {
     lowerCase,
     upperCase,
@@ -122,14 +122,21 @@ function passwordOptions() {
   };
   return options;
 }
+
 function generatePassword() {
+  //calls the 'passwordOptions' function above.
   const pwdOptions = passwordOptions();
   console.log(pwdOptions);
-
+  //creates an empty array called 'concats'
   let concats = [];
+  //creates an empty array called 'finalPassword'
   let finalPassword = [];
+  //creates an empty array called 'temp'
   let temp = [];
+
+  //if the user selects to use Upper Case letters, than this statement is true.
   if (pwdOptions.upperCase) {
+    //taking the empty array 'concats' and placing all of the upper cases characters inside of it.
     concats = concats.concat(upperCasedChars);
     temp.push(pickRandom(upperCasedChars));
   }
@@ -145,18 +152,22 @@ function generatePassword() {
     concats = concats.concat(specialChars);
     temp.push(pickRandom(specialChars));
   }
+
   console.log(concats);
   for (let i = 0; i <= pwdOptions.passLength; i++) {
     finalPassword.push(pickRandom(concats));
   }
+
   console.log(finalPassword);
   for (let i = 0; i < temp.length; i++) {
     finalPassword[i] = temp[i];
   }
+
   console.log(temp);
   console.log(finalPassword);
   return finalPassword.join("");
 }
+
 function pickRandom(arr) {
   let randomIndex = Math.floor(Math.random() * arr.length);
   return arr[randomIndex];
